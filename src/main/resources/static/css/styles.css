@@ -1,5 +1,5 @@
 body {
-    background-color: pink;
+    background: linear-gradient(#89cff0, yellow, pink);
 }
 
 div {
@@ -7,7 +7,8 @@ div {
     width: 50%;
     padding: 10px;
     text-align: center;
-    background-color: white;
+    border: inset;
+    box-shadow: 20px 10px 5px red;
 }
 
 h1 {

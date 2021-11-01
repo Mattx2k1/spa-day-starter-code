@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <title>Spa Menu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+
 </head>
-<body>
+<body class = "container">
 <h1>My Super Fancy Spa</h1>
 <div id = "clientProfile">
     <h2>My Profile</h2>
     <p th:text = "${client.skinType}"></p>
     <p th:text = "${client.nailService}"></p>
 </div>
+
 <div id = "servicesMenu">
     <h2>Menu of Available Services</h2>
     <div>
         <h3>Facial Treatments</h3>
         <p>The below facial treatments are recommended by our estheticians for your given skin type.</p>
-        <table>
+        <table class="table">
             <th:block th:each = "facial : ${client.appropriateFacials}">
                 <tr>
                     <td th:text = "${facial}"></td>
@@ -25,14 +29,16 @@
             </th:block>
         </table>
     </div>
-    <div th:if = "${client.nailService == 'manicure'}">
-        <h3>Manicure</h3>
-        <p th:replace =  "fragments :: manicureDescription"></p>
-    </div>
-    <div th:if = "${client.nailService == 'pedicure'}">
-        <h3>Pedicure</h3>
-        <p th:replace = "fragments :: pedicureDescription"></p>
-    </div>
+        <div th:if="${client.nailService == 'manicure' or client.nailService =='both'  }">
+            <h3> Manicure </h3>
+            <p th:replace="fragments :: manicureDescription " > </p>
+        </div>
+
+        <div th:if="${client.nailService == 'pedicure' or client.nailService =='both'  }">
+            <h3> Pedicure </h3>
+            <p th:replace="fragments :: pedicureDescription " > </p>
+        </div>
+
 </div>
 </body>
 </html>
